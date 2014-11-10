@@ -1,0 +1,85 @@
+<html> 
+  <center>
+    <body>
+      <head>
+        <link rel="stylesheet" type="text/css" href="/chitter.css">  
+
+        <!-- Latest compiled and minified CSS -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css">
+
+<!-- Optional theme -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap-theme.min.css">
+      </head>
+
+      <nav class="navbar navbar-inverse" role="navigation">
+  <div class="container-fluid">
+    <!-- Brand and toggle get grouped for better mobile display -->
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="/">Chitter</a>
+    </div>
+
+
+
+    <!-- Collect the nav links, forms, and other content for toggling -->
+    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+      <ul class="nav navbar-nav">
+       
+          
+      </ul>
+    
+    </div><!-- /.navbar-collapse -->
+  </div><!-- /.container-fluid -->
+</nav>
+
+  <%= yield %>
+<% if current_user %>
+     <form method="post" action='/sessions/new'>
+      <input type="hidden" name="_method" value="delete">
+      <input type="submit" value="Sign out">
+    </form>
+
+      <section id='new-peep'>
+    <form action='/peeps' method='post'>
+      Peep:<input type='text' name='content' autocomplete="off">
+           <input type='submit' value='Peep' >
+    </form>
+ </section>
+
+ <section id="display-peeps">
+    <% @peeps.reverse.each do |peep| %>
+
+    <p class="peep-username">@<%=h peep.user.user_name %>:</p><p><%=h peep.created_at %> </p>
+    <h3 id='peep-content' ><%=h peep.content %></h3>
+  <% end %>
+</section>
+<% end %>
+
+
+
+
+   <% if flash[:notice] %>
+    <div id="notice">
+      <%= flash[:notice] %>
+    </div>
+  <% end %>
+
+
+  <% if flash[:errors] && !flash[:errors].empty? %>
+  Sorry, there were the following problems with the form.
+  <ul id="errors">
+    <% flash[:errors].each do |error| %>
+      <h2><%= error %></h2>
+    <% end %>
+  </ul>
+<% end %>
+
+</center>
+  	</body>
+  </html>
+

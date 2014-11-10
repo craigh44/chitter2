@@ -1,0 +1,13 @@
+
+ 
+
+<section id="sign_up" >
+	<form action="/users/new" method='post'>
+		Username: <input type="text" name="user_name" value="<%= @user.user_name %>" autocomplete="off">
+		E-mail:   <input type="text" name='email' value="<%= @user.email %>" autocomplete="off">
+		Password: <input type="password" name='password' autocomplete="off">
+		Password Confirm: <input type="password" name='password_confirmation' autocomplete="off">
+
+							<input type='submit' value="Sign Up">
+</section>
+
