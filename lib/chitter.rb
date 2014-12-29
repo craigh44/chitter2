@@ -29,11 +29,13 @@ post '/peeps' do
 end
 
 get '/users/new' do 
+	@peeps = Peep.all
 	@user = User.new
 	erb :users
 end
 
 post '/users/new' do
+	@peeps = Peep.all
   @user = User.new(:user_name => params['user_name'],
   								 :email => params['email'], 
   								 :password => params['password'],

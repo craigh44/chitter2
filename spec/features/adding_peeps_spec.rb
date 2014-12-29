@@ -9,7 +9,8 @@ require 'spec_helper'
 
 		scenario 'user should be able to peep' do 
 			visit '/'
-			Peep.create('Peep')
+
+			Peep.create(:content => "Peep", :user_id => 1)
 			expect(Peep.count).to eq 1
 			peep = Peep.first
 			expect(peep.content).to eq 'Peep'
@@ -24,3 +25,9 @@ require 'spec_helper'
 	end
 
 end
+
+
+
+
+
+
