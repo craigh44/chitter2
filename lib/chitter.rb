@@ -4,7 +4,7 @@ env = ENV["RACK_ENV"] || "development"
 require 'sinatra'
 require 'rack-flash'
 
-DataMapper.setup(:default, "postgres://localhost/chitter_#{env}_2")
+DataMapper.setup(:default, "postgres://ekegvdyfinlapr:pZu_1XzLu8IkTBqk6XaSkSodLZ@ec2-54-246-81-118.eu-west-1.compute.amazonaws.com:5432/d6m7pf9pbqtv44")
 
 require_relative 'peeps'
 require_relative 'user'
