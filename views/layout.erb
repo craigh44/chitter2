@@ -54,8 +54,10 @@
  <section id="display-peeps">
     <% @peeps.reverse.each do |peep| %>
 
-    <p class="peep-username">@<%=h peep.user.user_name %>:</p><p><%=h peep.created_at %> </p>
+    <p class="peep-username">@<%=h peep.user.user_name %>:</p>
     <h3 id='peep-content' ><%=h peep.content %></h3>
+    <p><%=h peep.created_at.strftime("%v at %I:%M%p") %> </p>
+
   <% end %>
 </section>
 <% end %>
